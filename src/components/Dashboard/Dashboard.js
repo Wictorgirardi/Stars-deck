@@ -18,11 +18,13 @@ import Link from "@material-ui/core/Link";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import { mainListItems, secondaryListItems } from "./listItems";
+import { mainListItems, secondaryListItems } from "../ListItems/listItems";
 
-import Deposits from "./Deposits";
-import Orders from "./Orders";
-import Table from "./Table";
+import Deposits from "../Deposits/Deposits";
+import Deposits2 from "../Deposits/Deposits2";
+import Deposits3 from "../Deposits/Deposits3";
+import Orders from "../Orders/Orders";
+import Table from "../Table/Table";
 
 function Copyright() {
   return (
@@ -163,11 +165,7 @@ export default function Dashboard() {
           >
             Star Deck
           </Typography>
-          <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
+
         </Toolbar>
       </AppBar>
       <Drawer
@@ -198,12 +196,12 @@ export default function Dashboard() {
             </Grid>
             <Grid item xs={8} md={4} lg={4} align="center">
               <Paper className={fixedHeightPaper}>
-                <Deposits />
+                <Deposits2 />
               </Paper>
             </Grid>
             <Grid item xs={8} md={4} lg={4} align="center">
               <Paper className={fixedHeightPaper}>
-                <Deposits />
+                <Deposits3 />
               </Paper>
             </Grid>
           </Grid>

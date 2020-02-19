@@ -77,20 +77,11 @@ export default function FormEvent() {
           <form onSubmit={handleSubmit} noValidate>
             <Paper style={{ padding: 16 }}>
             <Grid item xs={12}> 
-            <h1>Cadastrar um novo evento</h1>
+            <h1>Cadastro em um novo evento</h1>
             </Grid>
               <Grid container alignItems="flex-start" spacing={2}>
-                <Grid item xs={6}>
-                  <Field
-                    fullWidth
-                    required
-                    name="nome"
-                    component={TextField}
-                    type="text"
-                    label="Nome do participante"
-                  />
-                </Grid>
-                <Grid item xs={6}>
+             
+                <Grid item xs={12}>
                   <Field
                     fullWidth
                     required
@@ -104,7 +95,7 @@ export default function FormEvent() {
                 <Grid item xs={12}>
                   <Field
                     fullWidth
-                    name="points"
+                    name="pontos"
                     component={Select}
                     label="Tipo de evento"
                     formControlProps={{ fullWidth: true }}
@@ -123,7 +114,7 @@ export default function FormEvent() {
                     type="submit"
                     disabled={submitting}
                   >
-                    Submit
+                    Cadastrar
                   </Button>
                 </Grid>
                 <Grid item xs={12}> 

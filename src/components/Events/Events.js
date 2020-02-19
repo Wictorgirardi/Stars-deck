@@ -18,12 +18,12 @@ import Link from "@material-ui/core/Link";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import { mainListItems, secondaryListItems } from "./listItems";
+import { mainListItems, secondaryListItems } from "../ListItems/listItems";
 
-import Deposits from "./Deposits";
-import Orders from "./Orders";
-import Table from "./TableEvents";
-import App from "./FormEvent";
+import Deposits from "../Deposits/Deposits";
+import Orders from "../Orders/Orders";
+import Table from "../TableEvents/TableEvents";
+import App from "../FormEvent/FormEvent";
 
 function Copyright() {
   return (
@@ -164,11 +164,6 @@ export default function Events() {
           >
             Star Deck
           </Typography>
-          <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -192,7 +187,6 @@ export default function Events() {
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <App></App>
-          <Table></Table>
           <Box pt={4}>
             <Copyright />
           </Box>

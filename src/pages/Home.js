@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import { makeStyles } from "@material-ui/core/styles";
-
+import Dashboard from "../components/Dashboard/Dashboard";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -9,14 +9,12 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-
-function App() {
-  const classes = useStyles();
+function Home() {
   return (
-    <header className="App-header">
-     
-    </header>
+    <div className="App">
+      <Dashboard></Dashboard>
+    </div>
   );
 }
 
-export default App;
+export default Home;

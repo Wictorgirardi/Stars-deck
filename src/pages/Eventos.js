@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import { makeStyles } from "@material-ui/core/styles";
-
+import Events from "../components/Events/Events";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -9,14 +9,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-
-function App() {
+function Eventos() {
   const classes = useStyles();
   return (
-    <header className="App-header">
-     
-    </header>
+    <div className="App">
+      <Events></Events>
+    </div>
   );
 }
 
-export default App;
+export default Eventos;

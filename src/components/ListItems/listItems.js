@@ -12,18 +12,23 @@ import TimelineIcon from "@material-ui/icons/Timeline";
 
 export const mainListItems = (
   <div>
+    <a href="/home" style={{ textDecoration: 'none', color: "#757575" }}> 
     <ListItem button>
       <ListItemIcon>
         <TimelineIcon />
       </ListItemIcon>
       <ListItemText primary="Ranking" />
     </ListItem>
+    </a>
+    <a href="/Eventos" style={{ textDecoration: 'none', color: "#757575" }}> 
     <ListItem button>
       <ListItemIcon>
         <AddIcon />
       </ListItemIcon>
       <ListItemText primary="Adicionar eventos" />
     </ListItem>
+    </a>
+    
   </div>
 );
 
