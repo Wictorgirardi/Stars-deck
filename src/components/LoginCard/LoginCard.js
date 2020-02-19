@@ -12,6 +12,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import axios from "axios";
+import {withRouter} from 'react-router-dom'
 
 function Copyright() {
   return (
@@ -62,17 +63,52 @@ class LoginCard extends Component {
     this.state = {
       username: "",
       password: "",
-      user: ""
+      user: "", 
+      route: ''
     };
     this.handleChangeUsername = this.handleChangeUsername.bind(this);
     this.handleChangePassword = this.handleChangePassword.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
-  async checkGit() {
-    console.log(this.state.username);
-
+  async addUser() {
+    var querystring = require("querystring");
+    //...
+    axios
+      .post(
+        "https://star-deck.herokuapp.com/user/create",
+        querystring.stringify({
+          nome: this.state.username, //gave the values directly for testing
+          senha: this.state.password,
+          pontos: 0
+        }),
+        {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          }
+        }
+      )
+      .then(function(response) {
+        window.location.assign("/home");
+        console.log(response);
+      });
   }
 
-  async componentDidMount() {}
+  async Checkgit() {
+    axios.get(`https://api.github.com/users/`+ this.state.username)
+    .then(res => {
+      const persons = res.data;
+      console.log(res.status)
+      if(res.status == 200){ 
+        this.addUser();
+      }
+      else 
+      alert('erro');
+      this.setState({ persons });
+    })
+  }
+
+  async componentDidMount() {
+  }
 
   handleChangeUsername(event) {
     this.setState({
@@ -84,6 +120,10 @@ class LoginCard extends Component {
     this.setState({
       password: event.target.value
     });
+  }
+  handleSubmit(event) {
+    this.Checkgit();
+    event.preventDefault();
   }
 
   render() {
@@ -101,7 +141,7 @@ class LoginCard extends Component {
             <Typography component="h1" variant="h5">
               Cadastre-se
             </Typography>
-            <form className={classes.form} noValidate>
+            <form className={classes.form} onSubmit={this.handleSubmit}>
               <TextField
                 variant="outlined"
                 margin="normal"
@@ -114,9 +154,7 @@ class LoginCard extends Component {
                 autoFocus
                 value={this.state.username}
                 onChange={this.handleChangeUsername}
-                onSubmit={ 
-                  this.state.username = this.state.user
-                }
+                //onSubmit={(this.state.username = this.state.user)}
               />
               <TextField
                 variant="outlined"
@@ -129,22 +167,17 @@ class LoginCard extends Component {
                 id="password"
                 autoComplete="current-password"
                 value={this.state.senha}
-                onChange= {this.handleChangePassword}
+                onChange={this.handleChangePassword}
               />
-              <a /* href="/home" style={{ textDecoration: "none" }} */>
                 <Button
-                  //type="submit"
+                  type="submit"
                   fullWidth
                   variant="contained"
                   color="primary"
-                  onClick={ 
-                  
-                      console.log(this.state.user)}
                   className={classes.submit}
                 >
                   Entrar
                 </Button>
-              </a>
               <Grid container>
                 <Grid item xs></Grid>
               </Grid>
@@ -152,7 +185,7 @@ class LoginCard extends Component {
           </div>
           <Box mt={8}>
             <Copyright />
-             <pre>{JSON.stringify(this.state)}</pre>
+           
           </Box>
         </Paper>
       </Container>
